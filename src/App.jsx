@@ -1,15 +1,15 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Home from "./pages/Home"
+import { Outlet } from "react-router-dom"
+import Footer from "./components/Footer"
+import Header from "./components/Header"
 
 function App() {
 
   return (
-    <BrowserRouter> 
-    <Routes>  
-      <Route path='/' element={<Home/>}/>
-       </Routes>
-    </BrowserRouter>
-
+    <>
+    <Header/>
+    <Outlet/>
+    <Footer/>
+    </>
   )
 }
 
