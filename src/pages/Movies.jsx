@@ -4,9 +4,8 @@ import Card from '../components/Card'
 import { useLoaderData } from 'react-router-dom'
 
 const Movies = () => {
-  // const result = useLoaderData();
-
-  // console.log(result);
+  const result = useLoaderData();
+  console.log(result);
   return (
     <div className='flex flex-col mx-[20em]'>
           <div className='flex flex-row justify-between items-center pt-10 ' >

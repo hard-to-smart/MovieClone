@@ -7,8 +7,5 @@ import Spinner from './components/Spinner.jsx'
 
 createRoot(document.getElementById('root')).render(
     <RouterProvider
-    router={AllRoute}
-    fallbackElement={<Spinner/>}
-  />
+    router={AllRoute} />
 )
-// routerprovider passing app
