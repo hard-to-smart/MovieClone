@@ -6,7 +6,7 @@ import Home from '../pages/Home'
 import Movies from '../pages/Movies'
 import Search from '../pages/Search'
 import Error404 from '../pages/Error404'
-import { ExploreMoviesLoader } from '../loaders/AllLoaders'
+// import { ExploreMoviesLoader } from '../loaders/AllLoaders'
 
 export const AllRoute = createBrowserRouter([
     {   
@@ -25,7 +25,7 @@ export const AllRoute = createBrowserRouter([
                         index:true,
                         path:'movie',
                         element:<Movies/>,
-                        loader: ExploreMoviesLoader
+                        // loader: ExploreMoviesLoader
                     },
                     {
                         path:'tv',

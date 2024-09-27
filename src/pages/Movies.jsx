@@ -4,8 +4,24 @@ import Card from '../components/Card'
 import { useLoaderData } from 'react-router-dom'
 
 const Movies = () => {
-  const result = useLoaderData();
-  console.log(result);
+  // const result = useLoaderData();
+  // console.log(result);
+  const movies = [
+    {
+      id: 1,
+      title: 'Movie 1',
+      description: 'Description for Movie 1',
+      poster: 'https://via.placeholder.com/150',
+      releaseDate: '2023-01-01'
+    },
+    {
+      id: 2,
+      title: 'Movie 2',
+      description: 'Description for Movie 2',
+      poster: 'https://via.placeholder.com/150',
+      releaseDate: '2023-02-15'
+    },
+  ];
   return (
     <div className='flex flex-col mx-[20em]'>
           <div className='flex flex-row justify-between items-center pt-10 ' >
@@ -16,7 +32,9 @@ const Movies = () => {
             </div>
           </div>  
           <div className='pt-10'>
-            <Card/>
+          {movies.map((movie)=>{
+            <Card key={movie.id} element={movie} />
+          })}
           </div>
           </div>
     )

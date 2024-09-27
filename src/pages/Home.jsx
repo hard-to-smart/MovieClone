@@ -11,12 +11,23 @@ const Home = () => {
   const [banner, getBanner] = useState();
   const fetchBannerImage = async () =>{
     const response = await axios.get(getUpcomingMoviesApi);
-    getBanner(response.data.results);
+    const data = response.data.results;
+    console.log(data);
+    const randomImage = Math.floor(Math.random() * (data.length - 0) + 0);
+    getBanner(randomImage);
   }
 
   useEffect(() => {
     fetchBannerImage();
   }, [])
+
+  console.log(banner);
+const randomImage = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+
+
 
   return (
     <>
