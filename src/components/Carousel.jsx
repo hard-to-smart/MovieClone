@@ -11,17 +11,20 @@ export default function Carousel({ slides }) {
     let previousSlide = () => {
         if (current === 0) setCurrent(slides.length - 1);
         else setCurrent(current - 0.5);
+        console.log(current)
     };
 
     let nextSlide = () => {
         if (current === slides.length - 1) setCurrent(0);
         else setCurrent(current + 0.5);
+        console.log(current)
+
     };
 
     return (
-        <div className=" overflow-hidden overscroll-x-contain relative ">
+        <div className=" overflow-hidden overscroll-x-contain relative">
             <div
-                className={`inline-flex transition ease-out duration-400 gap-4`}
+                className={`inline-flex transition ease-out duration-400 gap-4 mx-10`}
                 style={{
                     transform: `translateX(-${current * 100}%)`,
                 }}
