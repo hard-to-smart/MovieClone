@@ -27,13 +27,7 @@ export const AllRoute = createBrowserRouter([
                         path:'movie',
                         element:<Movies/>,
                         loader: ExploreMoviesLoader,
-                        children:[
-                            {
-                                path:'movie:id',
-                                element:<SinglePage/>
-                            }
-                            
-                        ]
+                        
                     },
                     {
                         path:'tv',
