@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProgressBar = () => {
+const ProgressBar = ({value}) => {
   return (
 <div class="relative size-10">
   <svg class="size-full -rotate-90" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
@@ -9,7 +9,7 @@ const ProgressBar = () => {
   </svg>
 
   <div class="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
-    <span class="text-center text-sm font-bold text-pink-600 dark:text-pink-500">35%</span>
+    <span class="text-center text-sm font-bold text-pink-600 dark:text-pink-500">{value.toFixed(1)}</span>
   </div>
 </div>
   )

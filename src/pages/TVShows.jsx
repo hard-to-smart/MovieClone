@@ -8,17 +8,20 @@ const Movies = () => {
   console.log(result);
   return (
     <div className='flex flex-col mx-[20em]'>
-          <div className='flex flex-row justify-between items-center pt-10 ' >
+          <div className='flex flex-row justify-between items-center py-20 ' >
             <h2 className='text-2xl'>Explore Tv Shows</h2>
             <div className='flex flex-row gap-4 '>
               <Select value='Select genre'/>
               <Select value='Sort By'/>
             </div>
           </div>  
-          <div className='pt-10'>
-            <Card/>
+          <div className='flex flex-wrap gap-4 justify-between'>
+            {
+              result.map((tv) => 
+              <Card key={tv.id} element={tv}/>
+            )
+            }
           </div>
-
           </div>
     )
 }

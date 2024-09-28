@@ -6,7 +6,8 @@ import Home from '../pages/Home'
 import Movies from '../pages/Movies'
 import Search from '../pages/Search'
 import Error404 from '../pages/Error404'
-// import { ExploreMoviesLoader } from '../loaders/AllLoaders'
+import { ExploreMoviesLoader, ExploreTVLoader, HomePageLoaders} from '../Loader'
+import SinglePage from '../pages/SinglePage'
 
 export const AllRoute = createBrowserRouter([
     {   
@@ -16,7 +17,7 @@ export const AllRoute = createBrowserRouter([
             {
                 index:true,
                 element: <Home/>,
-                // loader: TrendingLoader
+                loader: async ()=> await Promise.all(HomePageLoaders)
             },
             {   
                 path:'explore',
@@ -25,11 +26,19 @@ export const AllRoute = createBrowserRouter([
                         index:true,
                         path:'movie',
                         element:<Movies/>,
-                        // loader: ExploreMoviesLoader
+                        loader: ExploreMoviesLoader,
+                        children:[
+                            {
+                                path:'movie:id',
+                                element:<SinglePage/>
+                            }
+                            
+                        ]
                     },
                     {
                         path:'tv',
-                        element:<TVShows/>
+                        element:<TVShows/>,
+                        loader: ExploreTVLoader
                     }
                 ]
             },
@@ -37,8 +46,14 @@ export const AllRoute = createBrowserRouter([
                 path:'/search',
                 element:<Search/>,
                 
-            }
-        ]
+            },
+            
+        ],
+        
+    },
+    {
+        path:"*",
+        element:<Error404/>
     },
     
 ])
