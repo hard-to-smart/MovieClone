@@ -6,7 +6,7 @@ import Home from '../pages/Home'
 import Movies from '../pages/Movies'
 import Search from '../pages/Search'
 import Error404 from '../pages/Error404'
-import { ExploreMoviesLoader, ExploreTVLoader, HomePageLoaders} from '../Loader'
+import { ExploreMoviesLoader, ExploreTVLoader, HomePageLoaders, SingleMovieLoader, SingleTvLoader} from "../loaders/AllLoaders"
 import SinglePage from '../pages/SinglePage'
 
 export const AllRoute = createBrowserRouter([
@@ -27,13 +27,6 @@ export const AllRoute = createBrowserRouter([
                         path:'movie',
                         element:<Movies/>,
                         loader: ExploreMoviesLoader,
-                        children:[
-                            {
-                                path:'movie:id',
-                                element:<SinglePage/>
-                            }
-                            
-                        ]
                     },
                     {
                         path:'tv',
@@ -41,6 +34,16 @@ export const AllRoute = createBrowserRouter([
                         loader: ExploreTVLoader
                     }
                 ]
+            },
+            {
+                path:'movie/:id',
+                element:<SinglePage/>,
+                loader: SingleMovieLoader
+            },
+            {
+                path:'tv/:id',
+                element:<SinglePage/>,
+                loader: SingleTvLoader
             },
             {
                 path:'/search',

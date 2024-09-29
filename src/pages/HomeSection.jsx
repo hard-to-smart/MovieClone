@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ToggleButton from "../components/ToggleButton";
-import Card from "../components/Card";
 import Carousel from "../components/Carousel";
 
 const HomeSection = ({
@@ -12,7 +11,6 @@ const HomeSection = ({
 }) => {
   const [activeBtn, setActiveBtn] = useState(btn1value);
   const data = activeBtn === btn1value ? button1result : button2result
-
   return (
     <div className="px-[10em]">
       <div className="flex justify-between py-[20px] items-center">
@@ -25,7 +23,7 @@ const HomeSection = ({
         />
       </div>
       <div className="flex flex-wrap gap-4 justify-between flex-row">
-        <Carousel slides={data} />
+        <Carousel slides={data} activeBtn={activeBtn}/>
       </div>
     </div>
   );

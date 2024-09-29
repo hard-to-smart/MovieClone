@@ -1,8 +1,11 @@
 import React from 'react'
+import { getImageUrl } from '../ApiUrlRecord'
 
-const SingleCard = () => {
+const SingleCard = ({path}) => {
   return (
-    <div></div>
+    <div className='h-full w-[300px] shadow cursor-pointer' >
+      <img className='h-full w-full rounded-lg' src={getImageUrl+ path}/>
+    </div>
   )
 }
 

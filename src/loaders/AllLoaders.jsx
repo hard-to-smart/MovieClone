@@ -1,4 +1,4 @@
-import { getAllMoviesApi, getAllTvShowsApi, getPopularMoviesApi, getPopularTvShowApi, getTopRatedMovieApi, getTopRatedTVShowApi, getTrendingDayApi, getTrendingWeekApi, getUpcomingMoviesApi } from "./ApiUrlRecord"
+import { getAllMoviesApi, getAllTvShowsApi, getPopularMoviesApi, getPopularTvShowApi, getSingleMovieApi, getSingleTvShowApi, getTopRatedMovieApi, getTopRatedTVShowApi, getTrendingDayApi, getTrendingWeekApi, getUpcomingMoviesApi } from "../ApiUrlRecord"
 import axios from "axios"
 
 export const ExploreMoviesLoader = async () => {
@@ -45,5 +45,19 @@ export const PopularTvShowLoader = async () => {
   const response = await axios.get(getPopularTvShowApi);
   return response.data.results;
 }
+
+export const SingleMovieLoader = async ({params}) =>{
+  const { id } = params;
+  const response = await axios.get(getSingleMovieApi.replace("movie_id", id));
+  return response.data;
+}
+
+export const SingleTvLoader = async ({params}) =>{
+  const { id } = params;
+  const response = await axios.get(getSingleTvShowApi.replace("series_id", id));
+  return response.data;
+}
+
+// export const SearchLoader = async ()
 
 export const HomePageLoaders = [UpcomingMoviesLoader(), TrendingDayLoader(), TrendingWeekLoader(), TopRatedMovieLoader(), TopRatedTvShowLoader(), PopularMovieShowLoader(), PopularTvShowLoader()]

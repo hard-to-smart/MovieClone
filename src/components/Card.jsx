@@ -1,9 +1,26 @@
-import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import ProgressBar from './ProgressBar'
 import { getImageUrl } from '../ApiUrlRecord'
-const Card = ({element}) => {
+
+const Card = ({element, type}) => {
+  const navigate = useNavigate();
+  const handleCardClick=()=>{
+    if (type ==='movie'|| type==='Movies') {
+      navigate(`/movie/${element.id}`)
+    }
+    else if (type==='tv' || type=== 'Tv Shows') {
+      navigate(`/tv/${element.id}`)
+    }
+    else if (element.media_type !== undefined) {
+      navigate(`${element.media_type}/${element.id}`)
+    }
+    else{
+      navigate(`*`)
+    }
+  }
+
   return (
-    <div className='h-[400px] w-[220px] rounded-[18px] shadow'>
+    <div className='h-[400px] w-[220px] rounded-[18px] shadow cursor-pointer' onClick={handleCardClick} >
         <div className='relative'>
             <img className='h-[300px] w-full rounded-[18px]' src={getImageUrl+element.poster_path }/>
             <div className='absolute flex flex-row justify-between w-full items-center bottom-0'>

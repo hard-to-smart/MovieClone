@@ -47,7 +47,7 @@ const Header = () => {
                   ].join("block py-2 px-3 md:p-0")}
               
               >
-                <i class="fa fa-search" aria-hidden="true"></i>
+                <i className="fa fa-search" aria-hidden="true"></i>
               </NavLink>
             </li>
           </ul>
