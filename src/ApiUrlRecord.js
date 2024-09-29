@@ -23,11 +23,11 @@ export const getUpcomingMoviesApi = "https://api.themoviedb.org/3/movie/upcoming
 export const getGenreApi = "https://api.themoviedb.org/3/genre/movie/list?api_key=" + API_KEY
 // (to get geners)
 
-export const getAllTvShowsApi = "https://api.themoviedb.org/3/discover/tv?language=en-US&page=1&api_key=" + API_KEY
+export const getAllTvShowsApi = "https://api.themoviedb.org/3/discover/tv?language=en-US&api_key=" + API_KEY
 
 // with geners & sorting ()
 export const getSortedTvShowsApi = "https://api.themoviedb.org/3/discover/tv?page=3&with_genres=16&sort_by=popularity.desc"
-export const getAllMoviesApi = "https://api.themoviedb.org/3/discover/movie?language=en-US&page=1&api_key=" + API_KEY
+export const getAllMoviesApi = `https://api.themoviedb.org/3/discover/movie?language=en-US&api_key=${API_KEY}`; 
 
 // export const getAllMovieApi = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc&with_cast=AND&with_genres=AND" + API_KEY
 
