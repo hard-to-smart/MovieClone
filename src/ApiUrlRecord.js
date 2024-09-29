@@ -1,4 +1,4 @@
-const API_KEY = "fa89a24b6ec93d795380bdb4810bb735";
+export const API_KEY = "fa89a24b6ec93d795380bdb4810bb735";
 
 // (to get images)
 export const getImageUrl = "https://image.tmdb.org/t/p/original/" 
@@ -35,4 +35,6 @@ export const getSingleMovieApi = "https://api.themoviedb.org/3/movie/movie_id?la
 
 export const getSingleTvShowApi = 'https://api.themoviedb.org/3/tv/series_id?language=en-US&api_key=' + API_KEY
 
-export const getSearchByKeyword = "https://api.themoviedb.org/3/search/keyword?page=1" + API_KEY
+export const getSearchMovie = "https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY
+
+export const getSearchTvShow = "https://api.themoviedb.org/3/search/tv?api_key="+ API_KEY

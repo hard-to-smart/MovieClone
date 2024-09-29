@@ -6,7 +6,7 @@ import Home from '../pages/Home'
 import Movies from '../pages/Movies'
 import Search from '../pages/Search'
 import Error404 from '../pages/Error404'
-import { ExploreMoviesLoader, ExploreTVLoader, HomePageLoaders, SingleMovieLoader, SingleTvLoader} from "../loaders/AllLoaders"
+import { ExploreMoviesLoader, ExploreTVLoader, HomePageLoaders, SearchLoader, SingleMovieLoader, SingleTvLoader} from "../loaders/AllLoaders"
 import SinglePage from '../pages/SinglePage'
 
 export const AllRoute = createBrowserRouter([
@@ -48,6 +48,8 @@ export const AllRoute = createBrowserRouter([
             {
                 path:'/search',
                 element:<Search/>,
+                loader: SearchLoader,
+                errorElement: <Error404 value="no search results found"/>
                 
             },
             

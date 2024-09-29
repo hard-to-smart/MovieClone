@@ -1,18 +1,32 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom';
+
 
 const SearchBar = () => {
   const [formData, setFormData] = useState('');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  // const [searchParams, setSearchParams] = useSearchParams();
+
   const handleChange=(e)=>{
     setFormData(e.target.value);
   }
-  console.log(formData)
 
   const handleSearch=(e)=>{
     e.preventDefault();
-    navigate(`/search?query=${formData}`)
+    if (formData.trim() !== '') {
+      navigate(`/search?query=${formData}`);
+    }
+    setFormData('');
+    // setSearchParams({ query: formData}); 
   }
+//   useEffect(() => {
+//     if (searchParams.get('query')!== null) {
+//         navigate(`/search?query=${searchParams.get('query')}`);
+
+//     }
+// }, [searchParams, navigate]);
+  // console.log('Current Search Params:', Array.from(searchParams.entries()));
+  
   return (
     <form className='flex flex-row relative h-[4em] ' onSubmit={handleSearch}>
     <input className='text-slate-600 border rounded-full w-[50em] h-full text-2xl font-semibold px-[20px]' placeholder='Search a movie or tv show' value={formData} onChange={handleChange}/>

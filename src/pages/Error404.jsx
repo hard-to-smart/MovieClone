@@ -1,8 +1,11 @@
 import React from 'react'
 
-const Error404 = () => {
+const Error404 = ({value}) => {
   return (
+    <>
     <div>Error404</div>
+    <p>{value}</p>
+    </>
   )
 }
 
