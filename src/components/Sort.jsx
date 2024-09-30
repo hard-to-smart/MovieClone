@@ -1,17 +1,13 @@
 import React, {useState} from "react";
 
-const Sort = ({value}) => {
+const Sort = ({value, setSelectedSortOption}) => {
 
-    const [selectedOption, setSelectedOption] = useState("")
     const handleCallAPIData=(e)=>{
-        setSelectedOption(e.target.value);
-
+        setSelectedSortOption(e.target.value);
     }
-    console.log(selectedOption);
   return (
       <select
-        id="large"
-        
+        id="sortId"
         className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-pink-500 focus:border-pink-500  focus:ring-2" 
         onChange={handleCallAPIData}
         defaultValue={value}

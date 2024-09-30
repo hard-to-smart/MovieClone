@@ -1,26 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Spinner from './Spinner';
 
-const InfiniteScroll = ({ loadMoreData }) => {
-    const [isLoading, setLoading] = useState(false);
-   const handleScroll = () =>{
-    const {scrollTop, clientHeight, scrollHeight} = document.documentElement;
-    if(scrollTop + clientHeight >= scrollHeight){
-        if(!isLoading){
-        setLoading(true);
-        loadMoreData();
-    }
-    }
-   useEffect(()=>{window.addEventListener("scroll", handleScroll); return window.removeEventListener("scroll")},[isLoading])
+const InfiniteScroll = ({ fetchMoreData, hasMore }) => {
+    const [isLoading, setIsLoading] = useState(false);
 
-   }
+    const handleScroll = () => {
+        const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+        if (scrollTop + clientHeight >= scrollHeight - 200 && !isLoading) {
+            setIsLoading(true);
+            fetchMoreData();
+        }
+    };
 
-  return (
-    <div>
-    {
-        isLoading && <Spinner/>
-    }
-    </div>
-  )
-}
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [hasMore,isLoading]);
 
-export default InfiniteScroll
+    return (
+        <>
+            {isLoading && <Spinner />}
+        </>
+    );
+};
+
+export default InfiniteScroll;

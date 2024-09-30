@@ -13,6 +13,8 @@ const Movies = () => {
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setLoading] = useState(false);
+  const [selectedSortOption, setSelectedSortOption] = useState('');
+  const [selectedGenreOption, setSelectedGenreOption] = useState('');
   const handleScroll = () => {
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
     if (scrollTop + clientHeight >= scrollHeight-200) {
@@ -46,8 +48,8 @@ const Movies = () => {
           <div className='flex flex-row justify-between items-center py-20 ' >
             <h2 className='text-2xl'>Explore Tv Shows</h2>
             <div className='flex flex-row gap-4 '>
-              <Select value='Select genre'/>
-              <Sort value='Sort By'/>
+              <Select value='Select genre' setSelectedGenreOption={setSelectedGenreOption}/>
+              <Sort value='Sort By' setSelectedSortOption={setSelectedSortOption}/>
             </div>
           </div>  
           <div className='flex flex-wrap justify-between'>
