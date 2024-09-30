@@ -31,7 +31,7 @@ export const getAllMoviesApi = `https://api.themoviedb.org/3/discover/movie?lang
 
 // export const getAllMovieApi = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=true&language=en-US&page=1&sort_by=popularity.desc&with_cast=AND&with_genres=AND" + API_KEY
 
-export const getSingleMovieApi = "https://api.themoviedb.org/3/movie/movie_id?language=en-US&api_key=" + API_KEY
+export const getSingleMovieApi = "https://api.themoviedb.org/3/movie/movie_id?video=true&language=en-US&api_key=" + API_KEY
 
 export const getSingleTvShowApi = 'https://api.themoviedb.org/3/tv/series_id?language=en-US&api_key=' + API_KEY
 

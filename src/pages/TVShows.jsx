@@ -5,6 +5,7 @@ import { useLoaderData } from 'react-router-dom'
 import { getAllTvShowsApi } from '../ApiUrlRecord'
 import Spinner from '../components/Spinner'
 import axios from 'axios'
+import Sort from '../components/Sort'
 
 const Movies = () => {
   const result = useLoaderData();
@@ -46,7 +47,7 @@ const Movies = () => {
             <h2 className='text-2xl'>Explore Tv Shows</h2>
             <div className='flex flex-row gap-4 '>
               <Select value='Select genre'/>
-              <Select value='Sort By'/>
+              <Sort value='Sort By'/>
             </div>
           </div>  
           <div className='flex flex-wrap justify-between'>

@@ -6,6 +6,7 @@ import axios from 'axios';
 // import InfiniteScroll from '../components/InfiniteScroll';
 import Spinner from "../components/Spinner"
 import { getAllMoviesApi } from '../ApiUrlRecord';
+import Sort from '../components/Sort';
 
 const Movies = () => {
   const result = useLoaderData();
@@ -25,7 +26,7 @@ const Movies = () => {
   const loadMoreData = async () =>{
     if (!hasMore) return;
     const response = await axios.get(`${getAllMoviesApi}&page=${page + 1}`)
-    // console.log(response);
+    console.log(response);
     const newMovies  = response.data.results;
     if(newMovies.length === 0) setHasMore(false)
     else {
@@ -45,7 +46,7 @@ const Movies = () => {
             <h2 className='text-2xl'>Explore Movies</h2>
             <div className='flex flex-row gap-4 '>
               <Select value='Select genre'/>
-              <Select value='Sort By'/>
+              <Sort value='Sort By'/>
             </div>
           </div>  
           <div className='flex flex-wrap justify-between'>

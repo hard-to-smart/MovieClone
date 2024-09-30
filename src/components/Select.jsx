@@ -1,20 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 
-const Select = ({value, optionValues}) => {
+const Select = ({value}) => {
+  const [selectedOption, setSelectedOption] = useState('')
+    const handleChange=(e)=>{
+      setSelectedOption(e.target.value);
+    }
+    console.log(selectedOption);
   return (
-    <form className="max-w-sm mx-auto">
 
       <select
         id="large"
-        className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      >
-        <option selected>{value}</option>
-        <option value="US">United States</option>
-        <option value="CA">Canada</option>
-        <option value="FR">France</option>
-        <option value="DE">Germany</option>
+        className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-pink-500 focus:border-pink-500  focus:ring-2"
+        onChange={handleChange} defaultValue={value}>
+        <option  disabled>{value}</option>
+        <option value="action">Action</option>
+        <option value="adventure">Adventure</option>
+        <option value="comedy">Comedy</option>
+        <option value="drama">Drama</option>
       </select>
-    </form>
   );
 };
 
