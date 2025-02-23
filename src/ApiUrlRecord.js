@@ -38,3 +38,10 @@ export const getSingleTvShowApi = 'https://api.themoviedb.org/3/tv/series_id?lan
 export const getSearchMovie = "https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY
 
 export const getSearchTvShow = "https://api.themoviedb.org/3/search/tv?api_key="+ API_KEY
+
+export const getVideo = (path_name) =>{ return `https://api.themoviedb.org/3${path_name}/videos?&api_key=` + API_KEY}
+export const getCast = (path_name) =>{ return `https://api.themoviedb.org/3${path_name}/credits?api_key=` + API_KEY}
+
+export const getVideoUrl = (key) => `https://www.youtube.com/embed/${key}`
+
+export const getRecommendationsApi = "https://api.themoviedb.org/3/movie/movie_id/recommendations" + API_KEY
