@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { API_KEY, getImageUrl } from "../ApiUrlRecord";
+import React from "react";
+import { getImageUrl } from "../ApiUrlRecord";
 import person from "../assets/person.webp"
-const TopCast = ({ cast_id, name, character, profile_path }) => {
+const TopCast = ({name, character, profile_path}) => {
   return (
-    <div className="flex flex-col justify-center text-center m-2">
+    <div className="max-h-60 flex flex-col text-center align-top m-2">
       <div className="rounded-full w-36 h-36 bg-gray-200">
         <img
           src={`${profile_path? getImageUrl+profile_path : person}`}
@@ -11,7 +11,7 @@ const TopCast = ({ cast_id, name, character, profile_path }) => {
         />
       </div>
       <h3 className="font-medium text-white">{name}</h3>
-      <p className="font-light text-gray-300"> {character}</p>
+      <p className="font-light text-gray-300 overflow-hidden"> {character}</p>
     </div>
   );
 };

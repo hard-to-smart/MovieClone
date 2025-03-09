@@ -29,9 +29,9 @@ const Movies = () => {
     }
   };
   return (
-    <div className="flex flex-col mx-[12em]">
-      <div className="flex flex-row justify-between items-center py-20 ">
-        <h2 className="text-2xl">Explore Movies</h2>
+    <div className="flex flex-col mx-[1rem]">
+      <div className="flex flex-row justify-between items-center pt-[6rem] pb-[2rem]">
+        <h2 className="text-xl">Explore Movies</h2>
         <div className="flex flex-row gap-4 ">
           <Select
             value="Select genre"
@@ -40,7 +40,7 @@ const Movies = () => {
           <Sort value="Sort By" setSelectedSortOption={setSelectedSortOption} />
         </div>
       </div>
-      <div className="flex flex-wrap justify-between">
+      <div className="flex flex-wrap gap-2 justify-center">
         {data.map((movie) => (
           <Card key={movie.id} element={movie} type="movie" />
         ))}

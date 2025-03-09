@@ -9,7 +9,7 @@ const Card = ({element, type}) => {
       navigate(`/movie/${element.id}`)
     }
     else if (type==='tv' || type=== 'Tv Shows') {
-      navigate(`/tv/${element.id}`)
+      navigate(`/tv/${element.id}` )
     }
     else if (element.media_type !== undefined) {
       navigate(`${element.media_type}/${element.id}`)
@@ -20,9 +20,9 @@ const Card = ({element, type}) => {
   }
 
   return (
-    <div className='h-[400px] w-[220px] rounded-[18px] shadow cursor-pointer' onClick={handleCardClick} >
+    <div className='h-[22.5rem] w-[12.5rem] rounded-[18px] shadow cursor-pointer' onClick={handleCardClick} >
         <div className='relative'>
-            <img className='h-[300px] w-full rounded-[18px]' src={getImageUrl+element.poster_path }/>
+            <img className='h-auto w-full rounded-[18px]' src={getImageUrl+element.poster_path }/>
             <div className='absolute flex flex-row justify-between w-full items-center bottom-0'>
             <ProgressBar value={element.vote_average}/>
             <div className='gap-2 flex flex-row '>

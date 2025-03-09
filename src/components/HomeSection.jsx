@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ToggleButton from "../components/ToggleButton";
-import Carousel from "../components/Carousel";
+import ToggleButton from "./ToggleButton";
+import Carousel from "./Carousel";
 
 const HomeSection = ({
   title,
@@ -23,7 +23,7 @@ const HomeSection = ({
         />
       </div>
       <div className="flex flex-wrap gap-4 justify-between flex-row">
-        <Carousel slides={data} activeBtn={activeBtn}/>
+        <Carousel title={title} data={data} activeBtn={activeBtn}/>
       </div>
     </div>
   );

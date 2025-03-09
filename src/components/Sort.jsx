@@ -8,7 +8,7 @@ const Sort = ({value, setSelectedSortOption}) => {
   return (
       <select
         id="sortId"
-        className="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-pink-500 focus:border-pink-500  focus:ring-2" 
+        className="block w-full px-3 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-pink-500 focus:border-pink-500  focus:ring-2" 
         onChange={handleCallAPIData}
         defaultValue={value}
         >
