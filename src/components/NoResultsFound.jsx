@@ -1,7 +1,6 @@
 import React from 'react'
 
 const NoResultsFound = () => {
-    console.log("i m running")
   return (
     <>
         <p className='text-2xl text-white'> No Search Results found</p>

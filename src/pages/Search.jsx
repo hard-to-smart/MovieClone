@@ -7,7 +7,6 @@ const Search = () => {
   const result = useLoaderData();
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
-  console.log(result, result.length === 0 , "on search page");
   
   if(result.length === 0 || result=== null){
     return (

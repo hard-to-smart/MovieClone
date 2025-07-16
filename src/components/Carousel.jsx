@@ -7,6 +7,7 @@ import Card from "./Card";
 import TopCast from "./TopCast";
 import OfficialVideo from "./OfficialVideo";
 
+
 export default function Carousel({ title, data, activeBtn }) {
   let [current, setCurrent] = useState(0);
 
@@ -25,7 +26,7 @@ export default function Carousel({ title, data, activeBtn }) {
       case "Top Cast":
         return <TopCast key={index} {...item} />;
       case "Official Videos":
-        return <OfficialVideo key={index} {...item} />;
+        return <OfficialVideo key={index} element={item}/>;
       case "Similar Movies":
         return <Card key={index} element={item} type="Movies" />;
       case "Similar Tv Shows":
@@ -42,11 +43,11 @@ export default function Carousel({ title, data, activeBtn }) {
   return (
     <div className="p-6">
       <h4 className="text-2xl">{title}</h4>
-    <div className="flex flex-shrink-0  gap-2 w-full justify-center h-fit">
+    <div className="flex flex-shrink-0  gap-2 w-full justify-center ">
       <button onClick={previousSlide} className="text-3xl">
         <BsFillArrowLeftCircleFill />
       </button>
-      <div className=" overflow-y-hidden relative w-full">
+      <div className=" overflow-y-hidden w-full">
         <div
           className={`inline-flex transition ease-out duration-400 gap-2`}
           style={{

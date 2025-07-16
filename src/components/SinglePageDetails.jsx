@@ -1,7 +1,7 @@
 import react, { useState } from "react";
 import { getImageUrl, getVideo } from "../ApiUrlRecord";
 import { handlePlayVideo } from "../utils/handlePlayVideo";
-import PlayButton from "./PlayButton";
+import PlayButton from "./PlayButton/PlayButton";
 import Lable from "./Lable";
 import SingleCard from "./SingleCard";
 import ProgressBar from "./ProgressBar";
@@ -28,15 +28,10 @@ const SingePageDetails = ({data}) => {
               <Lable key={el.id} name={el.name} />
             ))}
           </div>
-          <div className="flex flex-row items-center gap-4">
-            {/* <ProgressBar value={data.vote_average} /> */}
-            <span
-              className="flex flex-row items-center gap-4"
-              onClick={() => handlePlayVideo(getVideo)}
-            >
-              <PlayButton />
-              Watch Trailer
-            </span>
+          <div className="flex flex-row items-center gap-4 py-[1rem]">
+            <ProgressBar value={data.vote_average} className="w-[4rem] h-[4rem]"/>
+            <a href="#" className={`flex flex-row items-center gap-[0.5rem] hover:text-pink-600 cursor-pointer`}><PlayButton />
+            <p>Watch Trailer</p></a>
             {videoClicked && (
               <VideoFrame url={videoUrl} close={isVideoClicked} />
             )}

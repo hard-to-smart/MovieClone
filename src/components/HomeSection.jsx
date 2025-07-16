@@ -12,7 +12,7 @@ const HomeSection = ({
   const [activeBtn, setActiveBtn] = useState(btn1value);
   const data = activeBtn === btn1value ? button1result : button2result
   return (
-    <div className="px-[10em]">
+    <>
       <div className="flex justify-between py-[20px] items-center">
         <h2 className="text-white text-2xl">{title}</h2>
         <ToggleButton
@@ -25,7 +25,7 @@ const HomeSection = ({
       <div className="flex flex-wrap gap-4 justify-between flex-row">
         <Carousel title={title} data={data} activeBtn={activeBtn}/>
       </div>
-    </div>
+    </>
   );
 };
 

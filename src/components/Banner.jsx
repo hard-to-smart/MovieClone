@@ -2,7 +2,6 @@ import React from 'react'
 import SearchBar from './SearchBar'
 
 const Banner = ({image}) => {
-  console.log(image)
   return (
     <section className={'bg-cover bg-no-repeat'} 
     style={{backgroundImage: `url(${image})`}}> 

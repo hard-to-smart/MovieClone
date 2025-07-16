@@ -1,8 +1,5 @@
-export const API_KEY = "fa89a24b6ec93d795380bdb4810bb735";
-
-// (to get images)
+const API_KEY = import.meta.env.VITE_API_KEY
 export const getImageUrl = "https://image.tmdb.org/t/p/original/" 
-
 
 export const getTrendingDayApi = "https://api.themoviedb.org/3/trending/all/day?language=en-US&api_key=" + API_KEY
 
@@ -38,9 +35,8 @@ export const getSearchMovie = "https://api.themoviedb.org/3/search/movie?api_key
 export const getSearchTvShow = "https://api.themoviedb.org/3/search/tv?api_key="+ API_KEY
 
 export const getVideo = (path_name) =>{ return `https://api.themoviedb.org/3${path_name}/videos?&api_key=` + API_KEY}
-export const getVideoThumbnail = (id)=>{ return `https://img.youtube.com/vi/${id}`}
 export const getCast = (path_name) =>{ return `https://api.themoviedb.org/3${path_name}/credits?api_key=` + API_KEY}
-
+export const getVideoThumbnail = (key)=> `https://img.youtube.com/vi/${key}/mqdefault.jpg`
 export const getVideoUrl = (key) => `https://www.youtube.com/embed/${key}`
 
 export const getRecommendationsApi = (path_name) => {return `https://api.themoviedb.org/3${path_name}/recommendations?api_key=`+ API_KEY}

@@ -32,7 +32,6 @@ const Movies = () => {
     else {
       setData((prevData)=>[...prevData, ...newShows]);
       // setPage((prevPage) => prevPage + 1);
-      console.log(data.length)
 
     }
   }

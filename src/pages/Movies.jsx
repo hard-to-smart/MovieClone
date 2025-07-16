@@ -17,10 +17,8 @@ const Movies = () => {
   const [selectedGenreOption, setSelectedGenreOption] = useState("");
 
   const loadMoreData = async () => {
-    console.log(hasMore)
     if (!hasMore) return;
     const response = await axios.get(`${getAllMoviesApi}&page=${page + 1}`);
-    console.log(response);
     const newMovies = response.data.results;
     if (newMovies.length === 0) setHasMore(false);
     else {

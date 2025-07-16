@@ -49,7 +49,6 @@ export const AllRoute = createBrowserRouter([
         element: <SinglePage />,
         loader: async ({ request, params }) => {
             const { type, id } = params;
-            console.log(`${type}/${id}`)
             const loaderMap = {
               movie: SinglePageDetailsLoaders.SingleMovieLoader,
               tv: SinglePageDetailsLoaders.SingleTvLoader,

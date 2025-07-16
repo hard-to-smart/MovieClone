@@ -7,9 +7,7 @@ import { getImageUrl } from '../ApiUrlRecord'
 const Home = () => {
 
   const result = useLoaderData()
-  console.log(result, "home page ")
   const backdropPath = getImageUrl + result[0][Math.floor(Math.random() * (result[0].length - 0) + 0)].backdrop_path;
-  console.log(backdropPath, "just checking")
 
   return (
     <>
