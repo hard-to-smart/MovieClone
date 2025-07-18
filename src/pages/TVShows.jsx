@@ -44,7 +44,7 @@ const Movies = () => {
 
   return (
     <div className='flex flex-col mx-[1rem]'>
-          <div className='flex flex-row justify-between items-center pt-[6rem] pb-[2rem]' >
+          <div className='flex flex-row max-md:flex-col justify-between items-center pt-[6rem] pb-[2rem] gap-2' >
             <h2 className='text-xl'>Explore Tv Shows</h2>
             <div className='flex flex-row gap-4'>
               <Select value='Select genre' setSelectedGenreOption={setSelectedGenreOption}/>

@@ -12,9 +12,9 @@ const Home = () => {
   return (
     <>
         <Banner image={backdropPath}/>
-        <HomeSection title='Trending' button1result= {result[1]} button2result={result[2]} btn1value='Day' btn2value='Week'/>
-        <HomeSection title= "What's Popular" button1result= {result[3]} button2result={result[4]} btn1value='Movies' btn2value='Tv Shows'/>
-        <HomeSection title="Top Rated" button1result= {result[5]} button2result={result[6]} btn1value='Movies' btn2value='Tv Shows'/>
+        <HomeSection title='Trending' button1result= {result[1]} button2result={result[2]} btn1value='Day' btn2value='Week' displayTitleInCard={false}/>
+        <HomeSection title= "What's Popular" button1result= {result[3]} button2result={result[4]} btn1value='Movies' btn2value='Tv Shows'  displayTitleInCard={false}/>
+        <HomeSection title="Top Rated" button1result= {result[5]} button2result={result[6]} btn1value='Movies' btn2value='Tv Shows'  displayTitleInCard={false}/>
     </>
   )
 }

@@ -2,11 +2,6 @@ import React, { useEffect } from 'react';
 import { getVideoUrl } from '../ApiUrlRecord';
 
 const Iframe = ({ videoKey, setSelectedVideo }) => {
-  // Prevent background scroll when modal is open
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => (document.body.style.overflow = 'auto');
-  }, []);
 
   return (
     <>

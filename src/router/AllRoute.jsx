@@ -27,7 +27,12 @@ export const AllRoute = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        loader: async () => await Promise.all(HomePageLoaders),
+        loader: async () => {
+          const results = await Promise.allSettled(HomePageLoaders);
+          return results.map(result =>
+            result.status === "fulfilled" ? result.value : null
+          );
+        }
       },
       {
         path: "explore",

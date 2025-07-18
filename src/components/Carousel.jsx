@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BsFillArrowRightCircleFill,
   BsFillArrowLeftCircleFill,
@@ -6,9 +6,10 @@ import {
 import Card from "./Card";
 import TopCast from "./TopCast";
 import OfficialVideo from "./OfficialVideo";
+import Iframe from "./Iframe";
 
 
-export default function Carousel({ title, data, activeBtn }) {
+export default function Carousel({ title, data, activeBtn, displayTitleInCard, selectedVideo, handlePlayVideo, setSelectedVideo}) {
   let [current, setCurrent] = useState(0);
 
   let previousSlide = () => {
@@ -26,7 +27,7 @@ export default function Carousel({ title, data, activeBtn }) {
       case "Top Cast":
         return <TopCast key={index} {...item} />;
       case "Official Videos":
-        return <OfficialVideo key={index} element={item}/>;
+        return <OfficialVideo key={index} element={item} handlePlayVideo={handlePlayVideo}/>;
       case "Similar Movies":
         return <Card key={index} element={item} type="Movies" />;
       case "Similar Tv Shows":
@@ -42,7 +43,7 @@ export default function Carousel({ title, data, activeBtn }) {
 
   return (
     <div className="p-6">
-      <h4 className="text-2xl">{title}</h4>
+    <h4 className="text-2xl pl-[2.5rem] pb-[1rem]">{displayTitleInCard ? '' : title}</h4>
     <div className="flex flex-shrink-0  gap-2 w-full justify-center ">
       <button onClick={previousSlide} className="text-3xl">
         <BsFillArrowLeftCircleFill />
@@ -63,6 +64,9 @@ export default function Carousel({ title, data, activeBtn }) {
         <BsFillArrowRightCircleFill />
       </button>
     </div>
+    {selectedVideo && (
+        <Iframe videoKey={selectedVideo} setSelectedVideo={setSelectedVideo}/>
+    )}
     </div>
   );
 }

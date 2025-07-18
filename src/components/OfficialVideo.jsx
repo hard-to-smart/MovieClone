@@ -4,11 +4,8 @@ import { getVideoThumbnail, getVideoUrl } from "../ApiUrlRecord";
 import PlayButton from "./PlayButton/PlayButton";
 import Iframe from "./Iframe";
 
-const OfficialVideo = ({ element }) => {
-  const [selectedVideo, setSelectedVideo] = useState(null);
-  function handlePlayVideo(id) {
-    setSelectedVideo(id);
-  }
+const OfficialVideo = ({ element, handlePlayVideo }) => {
+
   return (
     <div className="min-w-[200px]">
       <div
@@ -25,9 +22,6 @@ const OfficialVideo = ({ element }) => {
           <PlayButton />
         </div>
       </div>
-      {selectedVideo && (
-        <Iframe key={element?.key} setSelectedVideo={setSelectedVideo}/>
-      )}
       <h2>{element?.name}</h2>
     </div>
   );

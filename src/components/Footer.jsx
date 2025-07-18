@@ -47,7 +47,7 @@ const Footer = () => {
             </a>
           </div>
         </nav>
-        <p className="text-gray-400 text-center px-24">
+        <p className="text-gray-400 text-center min-lg:px-24">
 
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est nobis,
           soluta quidem omnis error excepturi quia voluptas nostrum sequi ipsum
