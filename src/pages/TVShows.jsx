@@ -6,6 +6,7 @@ import { getAllTvShowsApi } from '../ApiUrlRecord'
 import Spinner from '../components/Spinner'
 import axios from 'axios'
 import Sort from '../components/Sort'
+import { useGenres } from '../hooks/GenreContext'
 
 const Movies = () => {
   const result = useLoaderData();
@@ -15,6 +16,7 @@ const Movies = () => {
   const [isLoading, setLoading] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState('');
   const [selectedGenreOption, setSelectedGenreOption] = useState('');
+  const { genres } = useGenres();
   const handleScroll = () => {
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
     if (scrollTop + clientHeight >= scrollHeight-200) {
@@ -44,7 +46,7 @@ const Movies = () => {
 
   return (
     <div className='flex flex-col mx-[1rem]'>
-          <div className='flex flex-row max-md:flex-col justify-between items-center pt-[6rem] pb-[2rem] gap-2' >
+          <div className='flex flex-row max-md:flex-col justify-between items-center pt-[6rem] pb-[2rem] gap-2  px-[5rem]' >
             <h2 className='text-xl'>Explore Tv Shows</h2>
             <div className='flex flex-row gap-4'>
               <Select value='Select genre' setSelectedGenreOption={setSelectedGenreOption}/>
@@ -54,7 +56,7 @@ const Movies = () => {
           <div className='flex flex-wrap gap-2 justify-center'>
             {
               data.map((tv) => 
-              <Card key={tv.id} element={tv} type='tv'/>
+              <Card key={tv.id} element={tv} type='tv' genres={genres}/>
             )
             }
           </div>

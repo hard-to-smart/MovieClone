@@ -7,6 +7,8 @@ import InfiniteScroll from "../components/InfiniteScroll";
 // import Spinner from "../components/Spinner"
 import { getAllMoviesApi } from "../ApiUrlRecord";
 import Sort from "../components/Sort";
+import { getGenre } from "../loaders/AllLoaders";
+import { useGenres } from "../hooks/GenreContext";
 
 const Movies = () => {
   const result = useLoaderData();
@@ -15,7 +17,7 @@ const Movies = () => {
   const [hasMore, setHasMore] = useState(true);
   const [selectedSortOption, setSelectedSortOption] = useState("");
   const [selectedGenreOption, setSelectedGenreOption] = useState("");
-
+  const { genres } = useGenres();
   const loadMoreData = async () => {
     if (!hasMore) return;
     const response = await axios.get(`${getAllMoviesApi}&page=${page + 1}`);
@@ -26,9 +28,10 @@ const Movies = () => {
       setPage((prevPage) => prevPage + 1);
     }
   };
+
   return (
     <div className="flex flex-col mx-[1rem]">
-      <div className="flex flex-row justify-between items-center pt-[6rem] pb-[2rem]">
+      <div className="flex flex-row  max-md:flex-col gap-2 justify-between items-center pt-[6rem] pb-[2rem] px-[5rem]">
         <h2 className="text-xl">Explore Movies</h2>
         <div className="flex flex-row gap-4 ">
           <Select
@@ -40,7 +43,7 @@ const Movies = () => {
       </div>
       <div className="flex flex-wrap gap-2 justify-center">
         {data.map((movie) => (
-          <Card key={movie.id} element={movie} type="movie" />
+          <Card key={movie.id} element={movie} type="movie" genres={genres} />
         ))}
       </div>
       <InfiniteScroll fetchMoreData={loadMoreData} hasMore={hasMore} />

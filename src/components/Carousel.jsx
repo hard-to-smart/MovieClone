@@ -7,11 +7,12 @@ import Card from "./Card";
 import TopCast from "./TopCast";
 import OfficialVideo from "./OfficialVideo";
 import Iframe from "./Iframe";
+import { useGenres } from "../hooks/GenreContext";
 
 
 export default function Carousel({ title, data, activeBtn, displayTitleInCard, selectedVideo, handlePlayVideo, setSelectedVideo}) {
-  let [current, setCurrent] = useState(0);
-
+  const [current, setCurrent] = useState(0);
+  const {genres}  = useGenres();
   let previousSlide = () => {
     if (current <= 0) setCurrent(data.length - 1);
     else setCurrent(current - 4);
@@ -22,22 +23,23 @@ export default function Carousel({ title, data, activeBtn, displayTitleInCard, s
     else setCurrent(current + 4);
   };
 
-  const getIndividualComponent = (item, index) => {
+
+  const getIndividualComponent = (item, genres, index) => {
     switch (title) {
       case "Top Cast":
         return <TopCast key={index} {...item} />;
       case "Official Videos":
         return <OfficialVideo key={index} element={item} handlePlayVideo={handlePlayVideo}/>;
       case "Similar Movies":
-        return <Card key={index} element={item} type="Movies" />;
+        return <Card key={index} element={item} genres={genres} type="Movies" />;
       case "Similar Tv Shows":
-        return <Card key={index} element={item} type="TV Shows" />;
+        return <Card key={index} element={item} genres={genres} type="TV Shows" />;
       case "Recommendations":
-        return <Card key={index} element={item} />;
+        return <Card key={index} genres={genres} element={item} type={item?.media_type}/>;
       case "Trending":
       case "What's Popular":
       case "Top Rated":
-        return <Card key={index} element={item} type={activeBtn} />;
+        return <Card key={index} element={item} genres={genres} type={activeBtn} />;
     }
   };
 
@@ -56,7 +58,7 @@ export default function Carousel({ title, data, activeBtn, displayTitleInCard, s
           }}
         >
           {data && data.length > 0
-            ? data.map((item, index) => getIndividualComponent(item, index))
+            ? data.map((item, index) => getIndividualComponent(item, genres, index))
             : null}
         </div>
       </div>

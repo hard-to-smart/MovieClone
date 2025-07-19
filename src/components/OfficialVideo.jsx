@@ -1,8 +1,6 @@
-import React, { useRef, useState } from "react";
-// import { handlePlayVideo } from "../utils/handlePlayVideo";
-import { getVideoThumbnail, getVideoUrl } from "../ApiUrlRecord";
+import React from "react";
+import { getVideoThumbnail } from "../ApiUrlRecord";
 import PlayButton from "./PlayButton/PlayButton";
-import Iframe from "./Iframe";
 
 const OfficialVideo = ({ element, handlePlayVideo }) => {
 
@@ -10,7 +8,7 @@ const OfficialVideo = ({ element, handlePlayVideo }) => {
     <div className="min-w-[200px]">
       <div
         className="relative group rounded-md overflow-hidden cursor-pointer "
-        onClick={() => handlePlayVideo(element.id)}
+        onClick={() => handlePlayVideo(element.key)}
       >
         <img
           src={getVideoThumbnail(element?.key)}

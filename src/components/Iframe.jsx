@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { getVideoUrl } from '../ApiUrlRecord';
 
 const Iframe = ({ videoKey, setSelectedVideo }) => {
-
   return (
     <>
       {/* Dark background overlay */}
@@ -13,7 +12,7 @@ const Iframe = ({ videoKey, setSelectedVideo }) => {
         <div className="relative w-full max-w-4xl h-[60vh]">
           <button
             className="absolute top-2 right-2 z-50 text-white text-xl bg-black bg-opacity-50 px-3 py-1 rounded hover:bg-opacity-80"
-            onClick={() => setSelectedVideo(false)}
+            onClick={() => setSelectedVideo(null)}
           >
             ✕
           </button>
@@ -22,7 +21,7 @@ const Iframe = ({ videoKey, setSelectedVideo }) => {
             title="abc"
             allowFullScreen
             className="w-full h-full border-2 border-white rounded"
-          />
+          ></iframe>
         </div>
       </div>
     </>
