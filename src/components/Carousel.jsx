@@ -13,17 +13,30 @@ import { useGenres } from "../hooks/GenreContext";
 export default function Carousel({ title, data, activeBtn, displayTitleInCard, selectedVideo, handlePlayVideo, setSelectedVideo}) {
   const [current, setCurrent] = useState(0);
   const {genres}  = useGenres();
-  let previousSlide = () => {
-    if (current <= 0) setCurrent(data.length - 1);
-    else setCurrent(current - 4);
+  const [itemsPerView, setItemsPerView] = useState(5);
+  const totalSlides = Math.ceil(data?.length / itemsPerView);
+
+  const nextSlide = () => {
+    setCurrent((prev) => (prev + 1 >= totalSlides ? 0 : prev + 1));
+  };
+ 
+  const previousSlide = () => {
+    setCurrent((prev) => (prev - 1 < 0 ? totalSlides -1 : prev -1));
   };
 
-  let nextSlide = () => {
-    if (current >= data.length - 1) setCurrent(0);
-    else setCurrent(current + 4);
-  };
-
-
+  useEffect(() => {
+    const updateItemsPerView = () => {
+      const width = window.innerWidth;
+      if (width < 640) setItemsPerView(2);
+      else if (width < 768) setItemsPerView(3);
+      else if (width < 1024) setItemsPerView(4);
+      else setItemsPerView(5);
+    };
+  
+    updateItemsPerView();
+    window.addEventListener("resize", updateItemsPerView);
+    return () => window.removeEventListener("resize", updateItemsPerView);
+  }, [nextSlide, previousSlide, totalSlides, itemsPerView]);
   const getIndividualComponent = (item, genres, index) => {
     switch (title) {
       case "Top Cast":
@@ -44,31 +57,39 @@ export default function Carousel({ title, data, activeBtn, displayTitleInCard, s
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 w-full">
     <h4 className="text-2xl pl-[2.5rem] pb-[1rem]">{displayTitleInCard ? '' : title}</h4>
-    <div className="flex flex-shrink-0  gap-2 w-full justify-center ">
-      <button onClick={previousSlide} className="text-3xl">
-        <BsFillArrowLeftCircleFill />
-      </button>
-      <div className=" overflow-y-hidden w-full">
-        <div
-          className={`inline-flex transition ease-out duration-400 gap-2`}
+    <div className="relative w-full overflow-hidden">
+        <button
+          onClick={previousSlide}
+          className="absolute z-10 left-2 top-1/2 -translate-y-1/2 text-3xl text-white bg-black bg-opacity-40 rounded-full hover:bg-opacity-70"
+        >
+          <BsFillArrowLeftCircleFill />
+        </button>
+
+        <button
+          onClick={nextSlide}
+          className="absolute z-10 right-2 top-1/2 -translate-y-1/2 text-3xl text-white bg-black bg-opacity-40 rounded-full hover:bg-opacity-70"
+        >
+          <BsFillArrowRightCircleFill />
+        </button>
+
+      <div
+          className="flex transition-transform duration-500 ease-out gap-4"
           style={{
-            transform: `translateX(-${current * (100 / data.length)}%)`,
+            transform: `translateX(-${current * (100 / totalSlides)}%)`,
+            width: `${(data?.length * 100) / itemsPerView}%`,
           }}
         >
-          {data && data.length > 0
-            ? data.map((item, index) => getIndividualComponent(item, genres, index))
-            : null}
+          {data?.map((item, index) => (
+              getIndividualComponent(item, genres, index)
+          ))}
         </div>
       </div>
-      <button onClick={nextSlide} className="text-3xl">
-        <BsFillArrowRightCircleFill />
-      </button>
-    </div>
-    {selectedVideo && (
-        <Iframe videoKey={selectedVideo} setSelectedVideo={setSelectedVideo}/>
-    )}
+
+      {selectedVideo && (
+        <Iframe videoKey={selectedVideo} setSelectedVideo={setSelectedVideo} />
+      )}
     </div>
   );
 }

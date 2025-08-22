@@ -7,7 +7,7 @@ import ProgressBar from "./ProgressBar";
 
 const SingePageDetails = ({ data, handlePlayVideo }) => {
   const [videoClicked, isVideoClicked] = useState(false);
-
+  console.log({data})
   return (
     <div className="w-full h-full">
       <div
@@ -60,8 +60,6 @@ const SingePageDetails = ({ data, handlePlayVideo }) => {
               <p className="text-gray-400">{data?.runtime}</p>
             </div>
           </div>
-          <div className="border-b-2 border-white border-opacity-[0.1] py-2"> Director : </div>
-          <div className="border-b-2 border-white border-opacity-[0.1] py-2"> Writer : </div>
         </div>
       </div>
     </div>

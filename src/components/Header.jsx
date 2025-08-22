@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Search from "../pages/Search";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   const [toggleNav, setToggleNav] = useState(false);
   return (
-    <nav className="border-slate-950 bg-slate-900 w-full fixed top-0  z-10">
+    <nav className="border-slate-950 bg-[#04092d] w-full fixed top-0 z-50">
       <div className=" max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <NavLink
           to="/"
@@ -45,16 +47,6 @@ const Header = () => {
                 }
               >
                 Tv Shows
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `${isActive ? "text-pink-700" : "text-white"} py-2`
-                }
-              >
-                <i className="fa fa-search" aria-hidden="true"></i>
               </NavLink>
             </li>
           </ul>

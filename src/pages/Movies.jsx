@@ -34,14 +34,12 @@ const Movies = () => {
       <div className="flex flex-row  max-md:flex-col gap-2 justify-between items-center pt-[6rem] pb-[2rem] px-[5rem]">
         <h2 className="text-xl">Explore Movies</h2>
         <div className="flex flex-row gap-4 ">
-          <Select
-            value="Select genre"
-            setSelectedGenreOption={setSelectedGenreOption}
+          <Select selectedGenreOption={selectedGenreOption} setSelectedGenreOption={setSelectedGenreOption}
           />
-          <Sort value="Sort By" setSelectedSortOption={setSelectedSortOption} />
+          <Sort selectedSortOption={selectedSortOption} setSelectedSortOption={setSelectedSortOption}/>
         </div>
       </div>
-      <div className="flex flex-wrap gap-2 justify-center">
+      <div className="flex flex-wrap gap-2 justify-center ">
         {data.map((movie) => (
           <Card key={movie.id} element={movie} type="movie" genres={genres} />
         ))}

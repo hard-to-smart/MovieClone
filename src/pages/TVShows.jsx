@@ -15,7 +15,7 @@ const Movies = () => {
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setLoading] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState('');
-  const [selectedGenreOption, setSelectedGenreOption] = useState('');
+  const [selectedGenreOption, setSelectedGenreOption] = useState([]);
   const { genres } = useGenres();
   const handleScroll = () => {
     const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
@@ -49,8 +49,8 @@ const Movies = () => {
           <div className='flex flex-row max-md:flex-col justify-between items-center pt-[6rem] pb-[2rem] gap-2  px-[5rem]' >
             <h2 className='text-xl'>Explore Tv Shows</h2>
             <div className='flex flex-row gap-4'>
-              <Select value='Select genre' setSelectedGenreOption={setSelectedGenreOption}/>
-              <Sort value='Sort By' setSelectedSortOption={setSelectedSortOption}/>
+              <Select selectedGenreOption={selectedGenreOption} setSelectedGenreOption={setSelectedGenreOption}/>
+              <Sort selectedSortOption={selectedSortOption} setSelectedSortOption={setSelectedSortOption}/>
             </div>
           </div>  
           <div className='flex flex-wrap gap-2 justify-center'>

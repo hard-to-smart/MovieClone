@@ -14,7 +14,7 @@ const HomeSection = ({
   const data = activeBtn === btn1value ? button1result : button2result
   return (
     <>
-      <div className="flex justify-between py-[20px] px-16 items-center">
+      <div className="flex justify-between pt-4 px-10 items-center">
         <h2 className="text-white text-2xl">{title}</h2>
         <ToggleButton
           btn1value={btn1value}

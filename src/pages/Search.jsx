@@ -8,11 +8,9 @@ const Search = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
   
-  if(result.length === 0 || result=== null){
+  if(result?.length === 0 || result=== null){
     return (
-      <div className='w-screen h-screen flex justify-center items-center flex-col gap-4'>
       <NoResultsFound/>
-      </div>
     )
   }
 

@@ -7,12 +7,13 @@ const OfficialVideo = ({ element, handlePlayVideo }) => {
   return (
     <div className="min-w-[200px]">
       <div
-        className="relative group rounded-md overflow-hidden cursor-pointer "
+        className="relative group rounded-md overflow-hidden cursor-pointer max-h-[150px]"
         onClick={() => handlePlayVideo(element.key)}
       >
         <img
           src={getVideoThumbnail(element?.key)}
-          width="100%"
+          width="auto"
+          height="140px"
           alt="video thumbnail"
           className="hover:opacity-[0.7] hover:bg-black"
         />

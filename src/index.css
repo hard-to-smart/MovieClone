@@ -6,7 +6,7 @@
 @layer base {
     html {
       @apply text-white;
-      @apply bg-slate-800;
+      @apply bg-[#04152d];
     } 
   }
   
