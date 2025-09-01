@@ -23,6 +23,7 @@ const HomeSection = ({
           activeBtn={activeBtn}
         />
       </div>
+      
       <div className="flex flex-wrap gap-4 justify-between flex-row">
         <Carousel title={title} data={data} activeBtn={activeBtn} displayTitleInCard/>
       </div>

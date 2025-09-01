@@ -52,9 +52,9 @@ const Card = ({ element, genres, type }) => {
         </div>
       </div>
       <div className="p-2">
-        <h3 className="text-sm font-medium">{element.original_title}</h3>
+        <h3 className="text-sm font-medium">{element?.original_title || element?.original_name}</h3>
         <p className="text-gray-400 text-[0.75rem] font-extralight italic">
-          {element?.release_date}
+          {element?.release_date || element?.first_air_date}
         </p>
       </div>
     </div>

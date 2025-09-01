@@ -26,11 +26,11 @@ const Sort = ({ selectedSortOption, setSelectedSortOption}) => {
           </span>
         </li>
         <div className={`${showSortOptions ? 'block': 'hidden'} absolute left-0 w-full text-sm z-10 border text-gray-700 border-gray-300 rounded-b-lg bg-gray-50`}>
-        <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleCallAPIData("popularity desc")}>Popularity Descending</li>
-        <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleCallAPIData("popularity asc")}>Popularity Ascending</li>
-        <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleCallAPIData("rating desc")}>Rating Descending</li>
-        <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleCallAPIData("rating asc")}>Rating Ascending</li>
-        <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleCallAPIData("title a-z")}>Title A-Z</li>
+        <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleCallAPIData("popularity.desc")}>Popularity Descending</li>
+        <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleCallAPIData("popularity.asc")}>Popularity Ascending</li>
+        <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleCallAPIData("vote_average.desc")}>Rating Descending</li>
+        <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleCallAPIData("vote_average.asc")}>Rating Ascending</li>
+        <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleCallAPIData("original_title.asc")}>Title A-Z</li>
         </div>
       </ul>
   );

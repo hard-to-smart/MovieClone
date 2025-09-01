@@ -17,6 +17,7 @@ import {
   getSimilarRecommendations,
   getTrailerDetails,
 } from "../loaders/AllLoaders";
+// loader.js or your route file
 import SinglePage from "../pages/SinglePage";
 
 export const AllRoute = createBrowserRouter([
@@ -27,13 +28,10 @@ export const AllRoute = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        loader: () => {
-          return defer({
-            results: Promise.allSettled(HomePageLoaders).then(res =>
-              res.map(r => (r.status === "fulfilled" ? r.value : null))
-            )
-          });
-        }
+        loader:
+          () => {
+            return HomePageLoaders(); // returns the deferred object directly
+          }
       },
       {
         path: "explore",

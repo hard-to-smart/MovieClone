@@ -1,4 +1,4 @@
-  import { defer } from "react-router-dom";
+import { defer } from "react-router-dom";
 import { getAllMoviesApi, getAllTvShowsApi, getCast, getGenreApi, getPopularMoviesApi, getPopularTvShowApi, getRecommendationsApi, getSearchMovie, getSearchTvShow, getSimilarApi, getSingleMovieApi, getSingleTvShowApi, getTopRatedMovieApi, getTopRatedTVShowApi, getTrendingDayApi, getTrendingWeekApi, getUpcomingMoviesApi, getVideo } from "../ApiUrlRecord"
   import axios from "axios"
 
@@ -19,6 +19,7 @@ import { getAllMoviesApi, getAllTvShowsApi, getCast, getGenreApi, getPopularMovi
 
   export const TrendingDayLoader = ()=> fetchWrapper(async () => {
     const response = await axios.get(getTrendingDayApi);
+    console.log(response, "trending day")
     return response?.data?.results;
   })
 
@@ -138,5 +139,13 @@ import { getAllMoviesApi, getAllTvShowsApi, getCast, getGenreApi, getPopularMovi
   }
   
 
-  export const HomePageLoaders = [UpcomingMoviesLoader(), TrendingDayLoader(), TrendingWeekLoader(), TopRatedMovieLoader(), TopRatedTvShowLoader(), PopularMovieShowLoader(), PopularTvShowLoader()]
-  
+  export const HomePageLoaders = () =>
+  defer({
+    upcoming: UpcomingMoviesLoader(),
+    trendingDay: TrendingDayLoader(),
+    trendingWeek: TrendingWeekLoader(),
+    topRatedMovies: TopRatedMovieLoader(),
+    topRatedTV: TopRatedTvShowLoader(),
+    popularMovies: PopularMovieShowLoader(),
+    popularTV: PopularTvShowLoader(),
+  });  
