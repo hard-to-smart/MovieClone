@@ -13,8 +13,8 @@ export const GenreProvider = ({children})=>{
         const getGenre = async () => {
             try {
               const response = await fetch(getGenreApi);
-              const data = await response.json();
-              setGenres(data.genres || []);
+              const data = await response?.json();
+              setGenres(data?.genres || []);
             } catch (error) {
               console.error("Failed to fetch genres:", error);
               setGenres([]);

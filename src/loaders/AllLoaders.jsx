@@ -1,67 +1,68 @@
-  import { getAllMoviesApi, getAllTvShowsApi, getCast, getGenreApi, getPopularMoviesApi, getPopularTvShowApi, getRecommendationsApi, getSearchMovie, getSearchTvShow, getSimilarApi, getSingleMovieApi, getSingleTvShowApi, getTopRatedMovieApi, getTopRatedTVShowApi, getTrendingDayApi, getTrendingWeekApi, getUpcomingMoviesApi, getVideo } from "../ApiUrlRecord"
+  import { defer } from "react-router-dom";
+import { getAllMoviesApi, getAllTvShowsApi, getCast, getGenreApi, getPopularMoviesApi, getPopularTvShowApi, getRecommendationsApi, getSearchMovie, getSearchTvShow, getSimilarApi, getSingleMovieApi, getSingleTvShowApi, getTopRatedMovieApi, getTopRatedTVShowApi, getTrendingDayApi, getTrendingWeekApi, getUpcomingMoviesApi, getVideo } from "../ApiUrlRecord"
   import axios from "axios"
 
-  export const ExploreMoviesLoader = async () => {
+  export const ExploreMoviesLoader = ()=>fetchWrapper(async () => {
     const response = await axios.get(getAllMoviesApi);
-    return response.data.results;
-  }
+    return response?.data?.results;
+  })
 
-  export const ExploreTVLoader = async () =>{
+  export const ExploreTVLoader = ()=>fetchWrapper(async () =>{
     const response = await axios.get(getAllTvShowsApi);
-    return response.data.results;
-  }
+    return response?.data?.results;
+  })
 
-  export const UpcomingMoviesLoader = async ()=>{
+  export const UpcomingMoviesLoader = ()=>fetchWrapper(async ()=>{
     const response = await axios.get(getUpcomingMoviesApi);
-    return response.data.results;
-  }
+    return response?.data?.results;
+  })
 
-  export const TrendingDayLoader = async () => {
+  export const TrendingDayLoader = ()=> fetchWrapper(async () => {
     const response = await axios.get(getTrendingDayApi);
-    return response.data.results;
-  }
+    return response?.data?.results;
+  })
 
-  export const TrendingWeekLoader = async () =>{
+  export const TrendingWeekLoader = ()=> fetchWrapper(async () =>{
     const response = await axios.get(getTrendingWeekApi);
-    return response.data.results;
-  }
+    return response.data?.results;
+  })
 
-  export const TopRatedMovieLoader = async () =>{
+  export const TopRatedMovieLoader = () => fetchWrapper(async () =>{
     const response = await axios.get(getTopRatedMovieApi);
-    return response.data.results;
-  }
+    return response?.data?.results;
+  })
 
-  export const TopRatedTvShowLoader = async () =>{
+  export const TopRatedTvShowLoader = ()=>fetchWrapper(async () =>{
     const response = await axios.get(getTopRatedTVShowApi);
-    return response.data.results;
-  }
+    return response.data?.results;
+  })
 
-  export const PopularMovieShowLoader = async () =>{
+  export const PopularMovieShowLoader = ()=>fetchWrapper(async () =>{
     const response = await axios.get(getPopularMoviesApi);
-    return response.data.results;
-  }
+    return response.data?.results;
+  })
 
-  export const PopularTvShowLoader = async () => {
+  export const PopularTvShowLoader = ()=>fetchWrapper(async () => {
     const response = await axios.get(getPopularTvShowApi);
-    return response.data.results;
-  }
+    return response?.data?.results;
+  })
 
   const SingleMovieLoader = async ({params}) =>{
     const { id } = params;
     const response = await axios.get(getSingleMovieApi.replace("movie_id", id));
-    return response.data;
+    return response?.data;
   }
 
   const SingleTvLoader = async ({params}) =>{
     const { id } = params;
     const response = await axios.get(getSingleTvShowApi.replace("series_id", id));
-    return response.data;
+    return response?.data;
   }
 
-  export const Recommendations = async ({params})=>{
+  export const Recommendations =  async ({params})=>{
     const { id } = params;
     const response = await axios.get(getRecommendationsApi.replace("movie_id", id));
-    return response.data;
+    return response?.data;
   }
 
   export const VideoLoader = async ({params})=>{
@@ -83,11 +84,9 @@
     const url = new URL(request.url);
     const query = url.searchParams.get('query');
     try{
-      const [searchMoviesResponse, searchTvShowsResponse] = await Promise.all([
-        axios.get(`${getSearchMovie}&query=${query}`),
+      const searchResponse = await 
         axios.get(`${getSearchTvShow}&query=${query}`)
-        ])
-      return searchMoviesResponse.data.results.concat(searchTvShowsResponse.data.results)
+      return searchResponse.data?.results
     }
     catch (error){
       console.error('Error fetching search results:', error); 
@@ -97,36 +96,47 @@
     // top cast
     export const getCastDetails = async (url) => {
       const response = await axios.get(getCast(url));
-      return response.data.cast
-    };
+      return response?.data?.cast
+    }
 
     // other videos / trialer
-    export const getTrailerDetails = async (url) => {
+    export const getTrailerDetails =  async (url) => {
       const response = await axios.get(getVideo(url));
-      return response.data.results
-    };
+      return response?.data?.results
+    }
 
     // recommendations
     export const getSimilarRecommendations = async (url) =>{
       const response = await axios.get(getRecommendationsApi(url));
-      return response.data.results
+      return response?.data?.results
     }
 
     // similar
     export const getSimilar = async(url) => {
       const response = await axios.get(getSimilarApi(url));
-      return response.data.results
+      return response?.data?.results
     }
+    
   export const SinglePageDetailsLoaders = {
     SingleMovieLoader,
     SingleTvLoader
   }
 
-  export const getGenre = async () => {
+  export const getGenre = fetchWrapper(async () => {
     const response = await fetch(getGenreApi);
-    const data = await response.json();
-    return data.genres
-  };
+    const data = await response?.json();
+    return data?.genres
+  })
+
+  async function fetchWrapper(fn){
+    try {
+      return await fn();
+    } catch (error) {
+      console.error("Error in fetchWrapper:", error.message, error);
+      return [];
+    }
+  }
+  
 
   export const HomePageLoaders = [UpcomingMoviesLoader(), TrendingDayLoader(), TrendingWeekLoader(), TopRatedMovieLoader(), TopRatedTvShowLoader(), PopularMovieShowLoader(), PopularTvShowLoader()]
   

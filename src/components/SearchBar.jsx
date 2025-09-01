@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 
 const SearchBar = () => {
-  const [formData, setFormData] = useState('');
   const navigate = useNavigate();
-  // const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams()
+  const query = searchParams.get('query')
+  const [formData, setFormData] = useState(query ? query : '');
 
   const handleChange=(e)=>{
     setFormData(e.target.value);
@@ -16,16 +17,9 @@ const SearchBar = () => {
     if (formData.trim() !== '') {
       navigate(`/search?query=${formData}`);
     }
-    setFormData('');
-    // setSearchParams({ query: formData}); 
+    setFormData('')
   }
-//   useEffect(() => {
-//     if (searchParams.get('query')!== null) {
-//         navigate(`/search?query=${searchParams.get('query')}`);
 
-//     }
-// }, [searchParams, navigate]);
-  // console.log('Current Search Params:', Array.from(searchParams.entries()));
   
   return (
     <form className='flex flex-row relative w-full' onSubmit={handleSearch}>

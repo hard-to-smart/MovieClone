@@ -10,7 +10,7 @@ const ProgressBar = ({value}) => {
   </svg>
 
   <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
-    <span className="text-center text-sm font-bold text-pink-600 dark:text-pink-500">{value.toFixed(1)}</span>
+    <span className="text-center text-sm font-bold text-pink-600 dark:text-pink-500">{value?.toFixed(1)}</span>
   </div>
 </div>
   )

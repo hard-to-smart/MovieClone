@@ -7,12 +7,14 @@ import { loadImage } from "../utils/imageResource";
 const Card = ({ element, genres, type }) => {
   const navigate = useNavigate();
   const handleCardClick = () => {
-    if (type.toLowerCase().includes('movie')) {
+    console.log('called')
+
+    if (type?.toLowerCase().includes('movie')) {
       navigate(`/movie/${element.id}`);
-    } else if (type.toLowerCase().includes('tv')) {
+    } else if (type?.toLowerCase().includes('tv')) {
       navigate(`/tv/${element.id}`);
-    } else if (element.media_type !== undefined) {
-      navigate(`${element.media_type}/${element.id}`);
+    } else if (element?.media_type !== undefined) {
+      navigate(`${element?.media_type}/${element.id}`);
     } else {
       navigate(`*`);
     }
@@ -22,8 +24,8 @@ const Card = ({ element, genres, type }) => {
       behavior: "smooth",
     });
   };
-  const imageSrc = element.poster_path
-    ? loadImage(getImageUrl + element.poster_path).read()
+  const imageSrc =  element?.poster_path
+    ? loadImage(getImageUrl + element?.poster_path).read()
     : dummyCard;
   return (
     <div
@@ -41,7 +43,7 @@ const Card = ({ element, genres, type }) => {
             {element?.genre_ids?.slice(0, 2).map((id) => {
               const genreObj = genres?.find((el) => el.id === id);
               return (
-                <p className="flex justify-center items-center bg-pink-600 rounded-sm text-[0.75rem] text-nowrap">
+                <p key={id} className="flex justify-center items-center bg-pink-600 rounded-sm text-[0.75rem] text-nowrap">
                   {genreObj?.name}
                 </p>
               );
@@ -52,7 +54,7 @@ const Card = ({ element, genres, type }) => {
       <div className="p-2">
         <h3 className="text-sm font-medium">{element.original_title}</h3>
         <p className="text-gray-400 text-[0.75rem] font-extralight italic">
-          {element.release_date}
+          {element?.release_date}
         </p>
       </div>
     </div>

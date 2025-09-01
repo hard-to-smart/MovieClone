@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, defer } from "react-router-dom";
 import TVShows from "../pages/TVShows";
 import App from "../App";
 import Home from "../pages/Home";
@@ -27,11 +27,12 @@ export const AllRoute = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        loader: async () => {
-          const results = await Promise.allSettled(HomePageLoaders);
-          return results.map(result =>
-            result.status === "fulfilled" ? result.value : null
-          );
+        loader: () => {
+          return defer({
+            results: Promise.allSettled(HomePageLoaders).then(res =>
+              res.map(r => (r.status === "fulfilled" ? r.value : null))
+            )
+          });
         }
       },
       {
@@ -40,12 +41,14 @@ export const AllRoute = createBrowserRouter([
           {
             path: "movie",
             element: <Movies />,
-            loader: ExploreMoviesLoader,
+            loader: () => defer({
+              exploreMovies: ExploreMoviesLoader()
+            }) 
           },
           {
             path: "tv",
             element: <TVShows />,
-            loader: ExploreTVLoader,
+            loader: ()=> defer({exploreTV: ExploreTVLoader() }) ,
           },
         ],
       },

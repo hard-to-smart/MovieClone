@@ -6,6 +6,7 @@ const SinglePage = () => {
   const location = useLocation();
   const temp = location.pathname.trim();
   const result = useLoaderData();
+  console.log(result, "single page")
   const [selectedVideo, setSelectedVideo] = useState(null);
   function handlePlayVideo(id) {
     setSelectedVideo(id);

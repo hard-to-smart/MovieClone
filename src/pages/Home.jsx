@@ -3,12 +3,13 @@ import Banner from '../components/Banner'
 import HomeSection from '../components/HomeSection'
 import { useLoaderData } from 'react-router-dom'
 import { getImageUrl } from '../ApiUrlRecord'
-
+import abc from '../assets/card.png'
 const Home = () => {
 
   const result = useLoaderData()
-  const backdropPath = getImageUrl + result[0][Math.floor(Math.random() * (result[0].length - 0) + 0)].backdrop_path;
-
+  const backdropPath = Array.isArray(result) && result[0]?.some(item => item?.backdrop_path)
+  ? getImageUrl + result[0].filter(item => item?.backdrop_path)[Math.floor(Math.random() * result[0].filter(item => item?.backdrop_path).length)].backdrop_path
+  : abc;
   return (
     <>
         <Banner image={backdropPath}/>

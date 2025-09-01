@@ -20,8 +20,8 @@ export function loadImage(src) {
     cache[src] = {
       read() {
         if (status === "pending") throw promise;
-        if (status === "error") throw new Error("Image failed to load");
-        return src;
+        if (status === "error") throw promise;
+        return src; 
       },
     };
   }

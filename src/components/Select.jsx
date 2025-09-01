@@ -28,16 +28,16 @@ const Select = ({ selectedGenreOption, setSelectedGenreOption }) => {
         </span>
       </li>
       <div className={`${showGenreOptions ?'block': 'hidden'} absolute left-0 w-full text-sm z-10 border text-gray-700 border-gray-300 rounded-b-lg bg-gray-50`}> 
-        <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleSelectGenre('action')}>
+        <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleSelectGenre('Action')}>
           Action
         </li>
-      <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleSelectGenre('adventure')}> 
+      <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleSelectGenre('Adventure')}> 
           Adventure
         </li>
-      <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleSelectGenre('comedy')}> 
+      <li className="px-3 py-2 hover:bg-pink-200" onClick={()=>handleSelectGenre('Comedy')}> 
           Comedy
         </li>
-      <li className="px-3 py-2 hover:bg-pink-200 rounded-b-lg" onClick={()=>handleSelectGenre('drama')}> 
+      <li className="px-3 py-2 hover:bg-pink-200 rounded-b-lg" onClick={()=>handleSelectGenre('Drama')}> 
           Drama
         </li>
       </div>

@@ -24,15 +24,15 @@ export const getAllTvShowsApi = "https://api.themoviedb.org/3/discover/tv?langua
 // with geners & sorting ()
 export const getSortedTvShowsApi = "https://api.themoviedb.org/3/discover/tv?page=3&with_genres=16&sort_by=popularity.desc"
 
-export const getAllMoviesApi = `https://api.themoviedb.org/3/discover/movie?language=en-US&api_key=${API_KEY}`; 
+export const getAllMoviesApi = `https://api.themoviedb.org/3/discover/movie?language=en-US/changes&api_key=${API_KEY}`; 
 
 export const getSingleMovieApi = "https://api.themoviedb.org/3/movie/movie_id?video=true&language=en-US&api_key=" + API_KEY
 
 export const getSingleTvShowApi = 'https://api.themoviedb.org/3/tv/series_id?language=en-US&api_key=' + API_KEY
 
-export const getSearchMovie = "https://api.themoviedb.org/3/search/movie?api_key=" + API_KEY
+export const getSearchMovie = "https://api.themoviedb.org/3/search/multi?api_key=" + API_KEY
 
-export const getSearchTvShow = "https://api.themoviedb.org/3/search/tv?api_key="+ API_KEY
+export const getSearchTvShow = "https://api.themoviedb.org/3/search/multi?api_key="+ API_KEY
 
 export const getVideo = (path_name) =>{ return `https://api.themoviedb.org/3${path_name}/videos?&api_key=` + API_KEY}
 export const getCast = (path_name) =>{ return `https://api.themoviedb.org/3${path_name}/credits?api_key=` + API_KEY}
