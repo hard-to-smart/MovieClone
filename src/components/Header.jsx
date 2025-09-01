@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Search from "../pages/Search";
 import SearchBar from "./SearchBar";
-
+import logo from "../../src/assets/movix-logo.svg"
 const Header = () => {
   const [toggleNav, setToggleNav] = useState(false);
   return (
@@ -14,7 +14,7 @@ const Header = () => {
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <img
-            src="./../src/assets/movix-logo.svg"
+            src={logo}
             className="h-8"
             alt="Logo"
           />
